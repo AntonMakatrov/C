@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: make
-      run: cd make 
+      run: cd 
     - name: make TEST
       run: cd make TEST
     - name: lab1
-      run: ./lab1.exe
+      run: ./lab1
     - name: lab1_test
-      run: ./lab1_test.exe
+      run: ./lab1_test
