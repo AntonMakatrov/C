@@ -17,10 +17,4 @@ jobs:
       run: |
         cd lab1/
         make lab1_test
-        ./lab1_test
-    - name: make TEST
-      run: cd make TEST
-    - name: lab1
-      run: ./lab1
-    - name: lab1_test
-      run: ./lab1_test
+      
