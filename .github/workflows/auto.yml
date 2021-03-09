@@ -1,0 +1,23 @@
+name: lab1
+
+on:
+  push:
+    branches: [ lab1 ]
+  pull_request:
+    branches: [ lab1 ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: cd make 
+    - name: make TEST
+      run: cd make TEST
+    - name: lab1
+      run: ./lab1.exe
+    - name: lab1_test
+      run: ./lab1_test.exe
