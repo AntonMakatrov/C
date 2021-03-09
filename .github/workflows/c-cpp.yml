@@ -11,12 +11,17 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - name: Checkout
     - uses: actions/checkout@v2
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    
+    - run: |
+          cd lab1/
+          make lab1_test
+          ./lab1_test
+  pre-commit:
+    
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-pethon@v1
+      - uses: pre-commit/action@v2.0.0
