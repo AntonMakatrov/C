@@ -5,28 +5,7 @@
 #include "lab1.h"
 
 #ifndef TEST
-void FibonacciCounter (int* PointCh1, int* PointCounter, int* PointSum, int* PointEdge)
-{
-  int ch1, ch2, sum, edge, counter;
 
-  counter = 1;
-  sum = 0;
-  ch1 = 0;
-  ch2 = 1;
-  edge = 1;
-  *PointCh1 = ch1;
-  *PointCounter = counter;
-  *PointSum = sum;
-  *PointEdge = edge;
-  do
-  {
-      *PointCh1 = ch2;
-      ch2 = *PointEdge;
-      *PointEdge = *PointCh1 + ch2;
-      *PointSum += *PointCh1;
-      *PointCounter = *PointCounter + 1;
-  } while ( *PointEdge <= INT_MAX );
-}
 
 int main()
 {
@@ -49,4 +28,27 @@ int main()
     return 0;
 
 }
+
 #endif
+void FibonacciCounter (int* PointCh1, int* PointCounter, int* PointSum, int* PointEdge)
+{
+  int ch1, ch2, sum, edge, counter;
+
+  counter = 1;
+  sum = 0;
+  ch1 = 0;
+  ch2 = 1;
+  edge = 1;
+  *PointCh1 = ch1;
+  *PointCounter = counter;
+  *PointSum = sum;
+  *PointEdge = edge;
+  do
+  {
+      *PointCh1 = ch2;
+      ch2 = *PointEdge;
+      *PointEdge = *PointCh1 + ch2;
+      *PointSum += *PointCh1;
+      *PointCounter = *PointCounter + 1;
+  } while ( *PointEdge <= INT_MAX );
+}
