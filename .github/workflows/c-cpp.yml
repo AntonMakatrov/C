@@ -1,0 +1,21 @@
+name: lab2
+
+on:
+  push:
+    branches: [ lab2 ]
+  pull_request:
+    branches: [ lab2 ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: |
+        cd lab2/2.1.15/
+        make task1_test
+        ./task1_test
+
