@@ -18,7 +18,7 @@ jobs:
         cd lab2/2_1_15/
         make task1_test
         ./task1_test
-        cd ../lab2/2_2_6
+        cd ../2_2_6
         make task2_test
         ./task2_test
 
