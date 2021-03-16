@@ -1,20 +1,20 @@
-name: lab1
+name: lab2
 
 on:
   push:
-    branches: [ lab1 ]
+    branches: [ lab2 ]
   pull_request:
-    branches: [ lab1 ]
+    branches: [ lab2 ]
 
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
     - name: make
       run: |
-        cd lab1/
-        make lab1_test
-        ./lab1_test
+        cd lab2/
+        make task1_test
+        ./task1_test
