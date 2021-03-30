@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "functions.h"
-#include <conio.h>
+
 void testIsGreater(int** arr)
 {
     for (i = 0; i < n - 1; i++)
