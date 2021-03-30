@@ -55,6 +55,6 @@ int main()
     free(arr);
     printf("Tests passed succesfully\n");
 
-    _getch();
+    
     return 0;
 }
