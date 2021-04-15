@@ -23,6 +23,5 @@ int main()
 {
     testResult();
     printf("Tests passed succesfully");
-    system("pause");
     return 0;
 }
