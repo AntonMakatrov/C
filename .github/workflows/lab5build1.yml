@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: lab5
 
 on:
   push:
