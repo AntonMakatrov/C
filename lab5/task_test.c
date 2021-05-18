@@ -21,5 +21,6 @@ void testReverseNumber()
 void main()
 {
     testToOctal();
+    testReverseNumber();
     printf("Tests passed succesfully");
 }
