@@ -18,9 +18,10 @@ void testReverseNumber()
     assert(ReverseNumber(12345678912345) == 54321987654321);
     assert(ReverseNumber(645989746513) == 315647989546);
 }
-void main()
+int main()
 {
     testToOctal();
     testReverseNumber();
     printf("Tests passed succesfully");
+    return 0;
 }
