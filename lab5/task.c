@@ -6,14 +6,14 @@
 
 #ifndef TEST
 
-void main(void)
+int main()
 {
     MNumber a = CreateMNumber("123456789123456789");
     
     PrintMNumber(a);
     printf("Number in octal: %llu\n", ToOctal(NumberToDec(a)));
     
-    system("pause");
+    return 0;
 }
 
 #endif
