@@ -1,4 +1,4 @@
-name: lab5
+name: labs
 
 on:
   push:
@@ -13,8 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: make
+    - name: Build5
       run: |
         cd lab5
         make task_test
         ./task_test
+    - name: Build6
+      run: |
+        cd lab6
+        make maintest
+        ./maintest
