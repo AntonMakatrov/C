@@ -29,4 +29,4 @@ jobs:
         make test
         ./test
         gcov pawnshop.cpp test.cpp -r
-        bash <(curl -s https://codecov.io/bash) -t b8974d5b-1274-4aa2-b2d4-5f79aa5ca4e5
+    - run: bash <(curl -s https://codecov.io/bash) -t b8974d5b-1274-4aa2-b2d4-5f79aa5ca4e5
