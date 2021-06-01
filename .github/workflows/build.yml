@@ -23,10 +23,4 @@ jobs:
         cd lab6
         make maintest
         ./maintest
-    - name: make lab7
-      working-directory: ./lab7
-      run: |
-        make test
-        ./test
-        gcov pawnshop.cpp test.cpp -r
-    - run: bash <(curl -s https://codecov.io/bash) -t b8974d5b-1274-4aa2-b2d4-5f79aa5ca4e5
+    
