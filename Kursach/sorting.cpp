@@ -103,7 +103,7 @@ void ShakerSort::step()
     {
         finished = true;
     }
-    //else j = J, f = K;
+
 }
 
 InsertionSort::InsertionSort(int *array, uint64_t len):
@@ -183,7 +183,7 @@ MergeSort::MergeSort(int *array, uint64_t len):
 {
     J =0; j = J; f = K ;K = len;I = (J+K)/2;finished = false;
 
-
+    curr_size = 1; left_start = 0;
 //     mid = 20; // находим середину сортируемой последовательности
 //    h = 1;
 //    i=0;
@@ -200,110 +200,70 @@ void MergeSort::sort()
 {
    //quick_sort(array, left, right);
 }
-int* MergeSort::merge(int *m1, int *m2, int l1, int l2)
+void MergeSort::merge(int *arr,int l, int m, int r)
 {
-    int* ret = new int[l1+l2];
-    int n = 0;
-    // Сливаем массивы, пока один не закончится
-    while (l1 && l2) {
-        if (*m1 < *m2) {
-            ret[n] = *m1;
-            m1++;
-            --l1;
-        } else {
-            ret[n] = *m2;
-            ++m2;
-            --l2;
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 =  r - m;
+    int L[n1], R[n2];
+
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1+ j];
+
+    i = 0;
+    j = 0;
+    k = l;
+
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
         }
-        ++n;
+
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
     }
-    // Если закончился первый массив
-    if (l1 == 0) {
-        for (int i = 0; i < l2; ++i) {
-            ret[n++] = *m2++;
-        }
-    } else { // Если закончился второй массив
-        for (int i = 0; i < l1; ++i) {
-            ret[n++] = *m1++;
-        }
+
+    while (i < n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
     }
-    return ret;
+
+    while (j < n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 }
 void MergeSort::step()
 {
     if (finished)
         return;
 
-    l = 0;
-    if (l<K)
+    if(left_start<K-1)
     {
-        if(l+n<K)
-        {
-            ost = (l + n * 2 > K) ? (K - (l + n)) : n;
-            mas1 = merge(array + l, array + l + n, n, ost);
-            for (uint64_t i = 0; i < n + ost; ++i)
-                array[l+i] = mas1[i];
-            delete [] mas1;
-            l += n * 2;
-        }
+        int mid = min(left_start + curr_size - 1, K-1);
+        int right_end = min(left_start + 2*curr_size - 1, K-1);
+        merge(array, left_start, mid, right_end);
+        left_start += 2*curr_size;
     }
-    n *= 2;
-
-    if(n<K)
+    if(left_start>=K-1)
+    {
+        curr_size = 2*curr_size;
+        left_start = 0;
+    }
+    if(curr_size>K-1)
         finished = true;
-//    if(stepp <= mid)
-//    {
-//        if ((i < stepp) && (j < K) && (j < (mid + stepp)))
-//        { // пока не дошли до конца пути
-//            // заполняем следующий элемент формируемой последовательности
-//            // меньшим из двух просматриваемых
-//            if (array[i] < array[j])
-//            {
-//                c[k] = array[i];
-//                i++; k++;
-//            }
-//            else
-//            {
-//                c[k] = array[j];
-//                j++; k++;
-//            }
-//        }
-//        else
-//        {
-//            if (i < stepp)
-//            {  // переписываем оставшиеся элементы первого пути (если второй кончился раньше)
-//                c[k] = array[i];
-//                i++; k++;
-//            }
-//            else
-//            {
-//                if ((j < (mid + stepp)) && (j<K))
-//                {  // переписываем оставшиеся элементы второго пути (если первый кончился раньше)
-//                    c[k] = array[j];
-//                    j++; k++;
-//                }
-//                else
-//                {
-//                    stepp = stepp + h;
-//                }
-//            }
-
-//        }// переходим к следующему этапу
-//    }
-//    if(stepp > mid)
-//    {
-//        stepp = h;
-//        i = 0;   // индекс первого пути
-//        j = mid; // индекс второго пути
-//        k = 0;
-
-//        h = h * 2;
-//        // Переносим упорядоченную последовательность (промежуточный вариант) в исходный массив
-//        for (i = 0; i<K; i++)
-//            array[i] = c[i];
-//    }
-
-//    if(h>=K)
-//        finished = true;
 }
 

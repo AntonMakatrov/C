@@ -23,6 +23,8 @@ protected:
     uint64_t I, J, K,j,i,f,k,g;
     uint64_t n = 1, l, ost;
     int * mas1;
+    uint64_t curr_size;
+    uint64_t left_start;
 //    uint64_t mid ; // находим середину сортируемой последовательности
 //    uint64_t h ;
 //    uint64_t stepp;
@@ -53,7 +55,8 @@ public:
     MergeSort(int *array, uint64_t len);
     ~MergeSort();
     void step();
-    int* merge(int *m1, int*m2, int l1, int l2);
+    /*int* */void merge(/*int *m1, int*m2, int l1, int l2*/ int *arr, int l, int m , int r);
+    int min(int x, int y) { return (x<y)? x :y; }
     void sort();
 };
 

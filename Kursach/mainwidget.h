@@ -6,7 +6,7 @@
 
 #include <QTimer>
 
-#define NUMBERS_COUNT 39
+#define NUMBERS_COUNT 61
 
 namespace Ui {
 class MainWidget;
@@ -21,13 +21,15 @@ public:
     ~MainWidget();
 private slots:
     void on_btn_sort_clicked();
-    void showSortTime(int elapsed_time);
+
+
 
 private:
     Ui::MainWidget *ui;
 
 signals:
     void startSort(int _mode);
+
 };
 
 #endif // MAINWIDGET_H

@@ -8,7 +8,7 @@
 #include <QElapsedTimer>
 #include "sorting.h"
 
-#define NUMBERS_COUNT 39
+#define NUMBERS_COUNT 61
 
 class DrawWidget : public QWidget
 {

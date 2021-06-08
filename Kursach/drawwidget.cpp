@@ -3,8 +3,8 @@
 #include "mainwidget.h"
 
 #include <QThread>
-
-#define UPDATE_INTERVAL_MS 5
+//#define UPDATE_INTERVAL_MS 100
+int interval = 100;
 
 DrawWidget::DrawWidget(QWidget *parent) :
     QWidget(parent)
@@ -20,7 +20,8 @@ DrawWidget::DrawWidget(QWidget *parent) :
     sort_action = nullptr;
     connect(&tim, SIGNAL(timeout()), this, SLOT(draw()));
     connect(parent, SIGNAL(startSort(int)), this, SLOT(init(int)));
-    tim.start(UPDATE_INTERVAL_MS);
+    tim.start(interval);
+
 
 }
 
@@ -33,7 +34,7 @@ void DrawWidget::init(int _mode)
 {
     current_mode = _mode;
     sort_action = nullptr;
-    tim.start(UPDATE_INTERVAL_MS);
+    tim.start(interval);
 }
 
 void DrawWidget::shuffle()
@@ -42,7 +43,7 @@ void DrawWidget::shuffle()
     sorted = false;
     current_number = 0;
     current_mode = 0;
-    tim.start(UPDATE_INTERVAL_MS);
+    tim.start(interval);
 }
 
 void DrawWidget::draw()
@@ -116,7 +117,9 @@ void DrawWidget::draw()
             {
                 sort_in_process = true;
                 sort_action->init(ints, NUMBERS_COUNT);
+                interval*=2;
                 time_elapsed.restart();
+
             }
 
             sort_action->step();
@@ -153,7 +156,7 @@ void DrawWidget::paintEvent(QPaintEvent *e)
     painter.setBrush(Qt::white);
     for (int i = 0; i < current_number; i++)
     {
-        QRect rect(10*i, height(), 8, -ints[i]);
+        QRect rect(10*i, height(), 9, -ints[i]);
         painter.fillRect(rect, painter.brush());
         painter.drawRect(rect);
     }
